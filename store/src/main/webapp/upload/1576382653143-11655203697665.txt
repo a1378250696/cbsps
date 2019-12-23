@@ -1,0 +1,575 @@
+HTML:学习如何搭建页面结构和内容  (盖房子)
+CSS:负责美化页面   (装修)
+JavaScript:学习如何给页面添加动态效果
+JQuery:对原生JavaScript进行封装,是一个JS框架,简化JS操作
+BootStrap:前端框架,使前端页面开发变得更便捷更高效
+
+
+XML:可扩展标记语言
+HTML:超文本标记语言
+
+
+<html> 根标签,除了文档声明 所有标签都在其内部
+<head>头标签:给浏览器看的内容写在头标签里面
+	<meta charset="UTF-8"> 告诉浏览器字符集是什么
+	<title>Insert title here</title>页面标题
+</head>
+<body>体标签:给用户看的内容写在体标签
+				
+</body>
+</html>
+
+内容标题  h1-h6	  字体加粗, 自带上下间距,独占一行
+		align="left/right/center" 水平对齐方式
+换行<br>
+
+
+###列表标签
+1. 无序列表:  ul:type图标样式   li
+	
+	<ul type="square"><!-- unordered list无序列表 -->
+		<li></li><!-- list item列表项 -->
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+
+2. 有序列表: ol:type序号样式 start起始值 reversed降序    li
+
+	<ol type="1" start="10"
+		 reversed="reversed">
+		<li></li>
+		<li></li>
+	</ol>
+
+3. 定义列表: dl定义列表  dt定义标题  dd定义描述
+
+	<dl>		  <!-- 定义列表 -->
+	     <dt></dt> <!-- 定义标题 -->
+		<dd></dd> <!-- 定义描述 -->
+		<dd></dd>
+	     <dt></dt>
+		<dd></dd>
+		<dd></dd>
+	</dl>
+
+4. 列表嵌套: 有序列表和无序列表可以任意无限嵌套 
+
+<ul>
+  <li>凉菜
+    <ol>
+	<li>拍黄瓜</li>
+	<li>老醋花生</li>
+    </ol>
+  </li>
+  <li>炒菜
+	<ol>
+	  <li>宫保鸡丁</li>
+	  <li>番茄炒蛋
+	<ul>
+	  <li>甜口味</li>
+	  <li>咸口味</li>
+	</ul>
+      </li>
+    </ol>
+  </li>
+</ul>
+
+###图片标签img
+- src: 路径
+	1. 相对路径:访问站内资源时使用
+		- 图片和页面在同一目录:  直接写图片名
+		- 图片在页面的上级目录:  ../图片名
+		- 图片在页面的下级目录:  文件夹名/图片名
+	2. 绝对路径:访问站外资源时使用,又称为图片盗链,好处是节省本站资源,坏处:有找不到图片的风险  
+- alt: 当图片不能正常显示时显示的文本
+- title: 鼠标悬停时显示的文本
+- width/height:  1. 像素   2. 百分比   如果只设置宽度 高度会等比例缩放
+
+###超链接a
+- 如果不写href 则是纯文本
+- href:路径, 可以访问站内和站外的资源, 可以是页面资源也可以是文件资源,如果是文件资源,浏览器支持浏览的直接浏览器,不支持的则下载.
+- 图片超链接 
+
+###表格标签table
+- 标签: table tr行  td列   th表头   caption表格标题
+- 属性: table(border边框粗细 cellspacing两条线变一条线) td(跨行rowspan 跨列colspan)
+
+###表单form  
+- 作用: 获取用户输入的各种信息 提交到服务器
+- 学习表单主要学习的就是表单中有哪些控件: 文本框 密码框 单选 多选 下拉选等
+- 各种控件:
+1. 文本框 <input type="text"> 属性: name  value默认值 placeholder占位文本 readonly只读
+2. 密码框 <input type="password"> 属性:和文本框通用 
+3. 单选框 <input type="radio">  属性: value   默认选中checked
+4. 多选框 <input type="checkbox"> 属性: 和单选一样 
+5. 日期选择器 <input type="date"> 
+6. 文件选择器 <input type="file">
+7. 下拉选  <select name><option value 默认选中selected>
+8. 重置按钮 <input type="reset" value>
+9. 提交按钮 <input type="submit" value显示文本>
+
+###修改eclipse默认的缩进方式
+- window->preference->web->Html file->Editor->勾选 Indent using spaces 把下面的1改成2
+
+###实体引用(特殊字符)
+- 空格:  在html页面中 空格存在 空格折叠现象  通过&nbsp;
+- 小于号: &lt;
+- 大于号: &gt;
+
+###分区标签div
+- 分区标签自身没有显示效果,可以理解成是一个容器,对多个有相关性的标签进行统一管理
+- 一个页面一般分为三大区: 
+	<div>头</div>
+	<div>体</div>
+	<div>脚</div>
+- html5中新增了几个分区标签  作用和div一样,只是提高了代码可读性
+	<header>头</header>
+	<nav>导航</nav>
+	<article>文章/正文</article> <section>块/区域</section>
+	<footer>脚</footer>
+
+*******************************************************************************
+
+###CSS
+- Casecading层叠 Style样式Sheet表: 层叠样式表
+- 作用: 用于美化页面  (装修)
+
+###CSS的引入方式:
+- 学习如何把css写入到html页面中:
+- 三种引入方式:
+1. 内联样式: 在标签的style属性中添加样式代码,弊端:不能复用
+	<h1 style="color:red">今天贼冷</h1>
+2. 内部样式: 在head标签里面添加style标签,在标签体内添加样式代码, 好处可以复用, 弊端: 只能在当前页面复用
+
+3. 外部样式: 在单独的css文件中写样式代码,在html页面中通过link标签引入该样式文件, 好处:支持多页面复用.  
+- 外部样式工作中使用频率最高, 但是学习过程中内部样式用的多
+- 引入方式的优先级: 内联优先级最高,内部和外部优先级相同 后执行覆盖先执行的.
+
+###选择器
+- 当使用内部或外部样式时,需要先通过选择器选择到元素后再添加样式.
+1. 标签名选择器
+- 格式:  标签名{样式代码}
+- 选择 页面中所有该标签名的标签 
+2. id选择器
+- html页面中的所有标签都可以添加id属性, 每个标签的id属性需要是唯一的
+- 格式: #id{样式代码}
+- 选择 页面中id值为xxx的某一个标签
+3. class选择器(类选择器)
+- 格式: .class{样式代码}
+- 选择页面中所有class值为xxx的多个标签
+4. 分组选择器
+- 将多个选择器合并成一个选择器
+- 格式: #id,.class,h1{样式代码}
+5. 属性选择器
+- 格式: 标签名[属性名='值']{样式代码}
+- 通过元素的属性去做选择条件
+6. 子孙后代选择器
+- 格式: div p{样式代码}
+- 匹配div里面的所有p标签(子元素和所有后代元素)
+7. 子元素选择器 
+- 格式: div>p{样式代码}
+- 匹配div里面子元素里面的p标签(只包含子元素)
+8. 伪类选择器
+- 选择元素的状态: 未访问状态  访问过状态  悬停状态  点击状态
+- 格式: a:link未访问/visited访问过/hover悬停/active点击{样式代码}
+9. 任意元素选择器
+- 匹配页面中所有的元素
+- 格式: *{样式代码}
+
+
+
+1. 标签名   div{}
+2. id选择器    #id{}
+3. class      .class{}
+4. 分组      div,#id,.class{}
+5. 属性选择器   标签名[属性名='值']{}
+6. 子孙后代    div div p{}
+7. 子元素      div>div>p{}
+8. 伪类       a:link/visited/hover/active{}
+9. 任意元素     *{}
+
+###常见的样式
+####颜色赋值方式
+- 三原色: 红 绿 蓝  rgb   red green blue    每个颜色取值范围0-255
+
+1. 颜色单词赋值   red/blue/pink/green等
+2. 6位16进制赋值   #ff0000  
+3. 3位16进制赋值   #f00   等效 #ff0000
+4. 3位10进制赋值   rgb(255,0,0)
+5. 4位10进制赋值   rgba(255,0,0,0-1)   a=alpha透明值 值越小越透明
+
+####背景图片
+- background-image: url("路径");
+- background-size: 宽度  高度;  要有单位px
+- background-repeat: no-repeat; 禁止重复
+- background-position: 横向百分比  纵向百分比;
+
+
+
+###元素的显示方式 display
+- display:
+1. block: 块级元素,独占一行,可以修改宽高,包括:h1-h6,p,div
+2. inline: 行内元素, 共占一行,不能修改宽高,包括:span(分区元素), b加粗,i斜体,small小字体
+3. inline-block:行内块元素,共占一行并且可以修改宽高, 包括:img
+
+###盒子模型
+- 盒子模型=宽高+外边距+边框+内边距
+- 用于控制元素的显示效果,宽高用于控制元素的显示大小,外边距控制元素的显示位置,边框控制边框效果,内边距控制元素内容的位置
+
+####盒子模型之宽高
+- 通过width/height修改宽高
+- 赋值方式:
+	1. 像素 
+	2. 上级元素的百分比
+- 行内元素不能修改宽高
+
+####盒子模型之外边距
+- 什么是外边距: 元素距离上级元素或相邻兄弟元素的距离称为外边距.
+- 赋值方式:
+	margin:10px;  四个方向10
+	margin:10px 20px; 上下10 左右20
+	maring: 0 auto; 居中
+	maring:10px 20px 30px 40px 上右下左 顺时针
+	maring-left/right/top/bottom: 10px; 单独的某一个方向赋值
+- 粘连问题: 当元素的上边缘和上级元素的上边缘重叠时,给元素添加上外边距会出现粘连问题,通过给上级元素添加overflow:hidden解决
+
+####盒子模型之边框
+- 赋值方式: 
+	border-left/right/top/bottom: 边框粗细  样式  颜色;
+	border: 边框粗细  样式  颜色;
+- 圆角:
+	border-radius:20px;  值越大越圆
+
+####盒子模型之内边距
+- 什么是内边距: 元素边框距内容的距离,称为内边距,用于控制元素内容的位置
+- 赋值方式: 和外边距类似
+	padding-left/right/top/bottom: 单独某个方向
+	padding:10px;   四个方向
+	padding:10px 20px; 上下10  左右20px
+	padding:10px 20px 30px 40px; 上右下左
+
+####文本相关样式
+1. 水平对齐方式 text-align:left/right/center;
+2. 文本修饰: text-decoration: overline/underline/line-through/none
+3. 文本颜色: color:red;
+4. 行高:  line-height:20px;  可以实现垂直居中
+5. 字体大小:  font-size:20px; 
+6. 加粗和去掉加粗 :   font-weight:bold/normal;
+7. 斜体:     font-style:italic;
+8. 字体设置:   font-family: xxx,xxx,xxx; font: 20px xxx,xxx,xxx;
+
+####CSS的三大特性
+1. 继承性: 元素可以继承上级元素的文本相关样式, 部分标签自带的效果不受继承影响,比如:超链接自带的字体颜色, h1-h6自带的字体大小. 
+	作用: 可以提高开发效率
+2. 层叠性: 不同的选择器有可能选择到相同的元素,如果作用的样式不同,则样式全部层叠有效,如果作用的样式相同则由优先级决定
+3. 选择器优先级:  作用范围越小优先级越高, 直接选中优先级高于间接选中(继承属于间接选中) id>class>标签名>继承
+
+
+###定位方式4+1
+####position定位
+#####静态定位(文档流定位) 
+- 格式: position: static;(默认的定位方式)
+- 块级元素从上到下排列,行内元素从左向右排列
+- 通过外边距控制元素的位置
+#####相对定位
+- 格式: position: relative;
+- 元素不脱离文档流
+- 元素通过top/left/right/bottom
+样式,让元素相对于初始位置做偏移
+#####绝对定位
+- 格式: position: absolute;
+- 元素脱离文档流
+- 元素通过top/left/right/bottom样式,让元素相对于窗口(默认)或某一个上级元素做位置偏移
+- 如果想让绝对定位的元素坐标偏移相对于某一个上级元素,需要在上级元素中添加相对定位 
+#####固定定位
+- 格式: position: fixed;
+- 元素脱离文档流
+- 元素通过top/left/right/bottom样式,让元素相对于窗口.
+
+####浮动定位
+- 格式: float: left/right;
+- 脱离文档流, 元素从当前所在行向左或向右浮动,当撞到上级元素边框或其它浮动元素时停止
+- 如果一行装不下会自动换行,换行时有可能被卡主
+- 如果元素内的所有子元素全部浮动时,自动识别的高度为0,可以通过给父元素添加overflow:hidden解决
+- 当需要将纵向排列元素改成横向排列时,使用浮动定位
+
+###溢出设置 overflow
+- visible(默认) 超出显示
+- hidden    超出隐藏
+- scroll    超出滚动显示  
+
+*******************************************************************************
+
+###JavaScript
+- 负责给页面添加动态效果
+###语言特点:
+1. 属于脚本语言,不需要编译,由浏览器解析执行
+2. 属于弱类型语言
+3. 基于面向对象
+4. 安全性高: js语言只能访问浏览器内部的数据,不能访问浏览器以外的数据
+5. 交互性强: js语言可以直接嵌入到html页面中直接和用户进行交互不需要经过网络也不需要编译.
+
+###引入方式
+- 内联: 在标签的事件属性中添加js代码,当事件触发时执行js代码
+	
+		<input type="button" value="按钮"
+		onclick="alert('按钮点击了!')">  
+- 内部: 在html页面的任意位置添加script标签,在标签内部写js代码,推荐写在</body>的上面
+		
+		<script type="text/javascript">
+		  	alert("内部引入成功!");
+		  </script>
+- 外部: 把代码写在单独的js文件中,通过script标签的src属性引入js文件
+		
+		<script type="text/javascript"
+    		src="first.js"></script>
+
+###JS语法
+- 数据类型 变量 运算符 语句 方法声明 面向对象
+
+####数据类型
+- JS中只有对象类型
+- 常见的对象类型:
+	1. 数值类型: number     var x = 10; 
+	2. 字符串类型: string   var s = "abc"/'abc';
+	3. 布尔值类型: boolean  var b = true/false;
+	4. 未定义类型: undefined      var u; 只声明不赋值就是未定义类型
+	5. 自定义类型: object   
+
+####变量声明和赋值
+- JS语言属于弱类型的语言
+- java: int x = 10;     x="abc";报错
+- js: var x = 10;       x="abc"; 允许,因为JS中弱化了类型的概念
+	Person p = new Person();    js:  var p = new Person();
+
+####运算符 + - * / % > < >= <= = == !=
+- ==和===, ==是先统一类型再比较值,===是先比较类型再比较值
+	"666"==666  true         "666"===666  false
+- 除法运算,会自动转换整数和小数     
+	java: int x = 5; int y = 2;  x/y=?  2
+	js: var x = 5; var y = 2;   x/y=2.5 
+- typeof 变量;   typeof 66 + 6 = "number6" 
+
+####语句 if else while do while for switch case
+- 和Java大体相同
+- for循环中的  int i 改成 var i
+
+####方法声明
+- java: public void 方法名(参数列表){方法体}
+- js: function 方法名(参数列表){方法体}
+- 声明常见的四种方法:
+	1. 无参无返回值
+	2. 无参有返回值
+	3. 有参无返回值
+	4. 有参有返回值
+- JS中方法声明有三种方式:
+	1. function 方法名(参数列表){方法体}
+	2. var 方法名 = function(参数列表){方法体}
+	3. var 方法名 = new Function("参数1","参数2","方法体");
+
+###和页面相关的方法
+1. 通过id查找页面中的元素
+	<div id="abc">div1</div>
+	var d = document.getElementById("abc");
+2. 获取和修改元素的文本内容
+	d.innerText    获取
+	d.innerText = "xxx";  修改 
+3. 获取和修改文本框的文本内容
+	<input type="text" id="i1">
+	var i1 = document.getElementById("i1");
+	i1.value  获取
+	i1.value="xxx"; 修改
+4. 获取和修改元素的html内容 
+	d1.innerHTML="<h1>xxx</h1>"; 修改
+	d1.innerHTML+="<h1>xxx</h1>"; 追加
+	d1.innerHTML 获取 
+
+###NaN  
+- Not a Number 不是一个数, isNaN(x)  判断x是否是数值  true代表不是数,false代表是数
+
+###JavaScript中的对象分类 
+1. 内置对象: 包括number,string,boolean等 
+2. 浏览器相关对象: BOM Browser Object Model(浏览器对象模型)
+3. 页面相关对象: DOM Document Object Model(文档对象模型)
+
+###BOM浏览器相关对象
+- window: window里面的属性称为全局属性,方法称为全局方法,调用window里面的属性或方法的时候可以将window.省略掉 
+- window中常见属性
+	1. location位置
+	location.href 获取和修改浏览器当前的请求地址
+	2. history历史  当前窗口的历史记录
+	history.length 获取历史页面的数量
+	history.back()  返回上一页面
+	history.forward() 前往下一页面
+	3. navigator 导航/帮助
+	navigator.userAgent 获取浏览器的版本信息
+- window中常见的方法
+	1. alert() 弹出提示框
+	2. confirm() 弹出确认框
+	3. prompt() 弹出文本输入框
+	4. parseInt()/parseFloat()
+		parseInt(2.38)    2
+		parseInt("20")   20 
+		parseInt("20asdf")  20
+		parseInt("a20")  NaN
+		parseFloat("3.8") 3.8
+	5. isNaN()  判断一个变量是否是数
+	6. 定时器 
+		开启:var timer = setInterval(方法,时间间隔);
+		停止: clearInterval(timer);
+
+
+###只执行一次的定时器
+- 格式:  setTimeout(方法,时间间隔);
+
+###事件相关
+- 什么是事件: 事件就是系统给提供的一些特定时间点,事件分为:鼠标事件\键盘事件和状态改变事件
+1. 鼠标事件: 
+- onclick  鼠标点击事件
+- onmouseover 鼠标移入事件
+- onmouseout 鼠标移出事件
+- onmousedown 鼠标按下事件
+- onmouseup 鼠标抬起事件
+- onmousemove 鼠标移动事件
+2. 键盘事件:
+- onkeydown 键盘按下
+- onkeyup 键盘抬起 
+3. 状态改变事件:
+- onload  页面加载完成事件
+- onchange 值改变事件
+
+####事件绑定
+1. 通过事件属性给元素添加事件
+	
+		<input type="button" value="属性绑定"
+		onclick="fn1()"> 
+2. 动态绑定事件,通过js代码给元素添加事件
+	
+	//动态绑定事件
+	btn.onclick = function(){
+		alert("动态绑定事件!");
+	}
+
+###事件传递(事件冒泡儿)
+- 如果某个位置需要响应多个元素的事件,则响应的顺序是从下往上(类似气泡,所以称为事件冒泡儿)
+
+###DOM 文档对象模型 里面的内容是和页面相关的
+- document.getElementById("");
+- d1.innerText
+- d1.innerHTML
+- i1.value
+
+###jQuery
+- jq是一个js语言的框架,对原生的js代码进行了封装,可以让程序员写的更少但实现的更多
+
+###如何引入jQuery
+- jq框架就是一个普通的js文件,和引入普通js文件一样
+
+###js对象和jq对象互相转换
+1. js转jq
+		var jq = $(js);
+2. jq转js   jq对象就是数组
+		var js = jq[0];
+
+###选择器
+1. 基础选择器
+- 标签名选择器    $("div")
+- id选择器        $("#id")
+- class选择器     $(".class")
+- 分组选择器      $("#id,.class,div")
+- 任意元素选择器   $("*")
+
+2. 层级选择器
+- $("div span") 匹配div里面的所有span
+- $("div>span") 匹配div里面的span子元素
+- $("div+span") 匹配div的弟弟元素span
+- $("div~span") 匹配div的弟弟们元素span
+
+- 层级相关的方法:
+	1. 获取id为abc元素的所有兄弟 $("#abc").siblings("div")
+	2. 获取id为abc元素的哥哥元素 $("#abc").prev();
+	3. 获取id为abc元素的哥哥们元素 $("#abc").prevAll();
+	4. 获取id为abc元素的弟弟元素 $("#abc").next();
+	5. 获取id为abc元素的弟弟们元素 $("#abc").nextAll();
+	6. 获取id为abc元素的父元素 $("#abc").parent();
+	7. 获取id为abc元素的子元素们元素 $("#abc").children();
+
+3. 过滤选择器
+- $("div:first") 匹配所有div中的第一个
+- $("div:last") 匹配所有div中的最后一个
+- $("div:eq(n)") 匹配所有div中的第n个 n从0开始
+- $("div:lt(n)") 匹配所有div中下标小于n的元素  n从0开始
+- $("div:gt(n)") 匹配所有div中下标大于n的元素  n从0开始
+- $("div:not(.abc)") 匹配所有div中class值不是abc的
+- $("div:even")  匹配所有div中下标为偶数的元素
+- $("div:odd") 匹配所有div中下标为奇数的元素
+
+4. 内容选择器
+- $("div:has(p)") 匹配包含p子元素的div
+- $("div:empty") 匹配空的div
+- $("div:parent") 匹配非空的div
+- $("div:contains('xxx')") 匹配包含xxx文本的div
+
+5. 可见选择器
+- $("div:visible") 匹配所有显示的div
+- $("div:hidden") 匹配所有隐藏的div
+- 和隐藏显示相关的方法
+	1. 让id为abc的元素隐藏  $("#abc").hide();
+	2. 让id为abc的元素显示  $("#abc").show();
+	3. 让id为abc的元素隐藏显示切换 $("#abc").toggle();
+
+6. 属性选择器
+- $("div[属性名]") 匹配所有包含指定属性名的div
+- $("div[属性名='值']") 匹配指定属性名和属性值的div
+- $("div[属性名!='值']") 匹配指定属性名不等于某个值的div
+
+7. 子元素选择器
+- $("div:first-child") 匹配是div并且是第一个子元素
+- $("div:last-child") 匹配是div并且是最后一个子元素
+- $("div:nth-child(n)") 匹配是div并且是第n个子元素  n从1开始
+
+8. 表单选择器
+- $(":input") 匹配表单中所有的控件  
+- $(":password") 匹配所有密码框
+- $(":radio") 匹配所有单选 
+- $(":checkbox") 匹配所有多选
+- $(":checked") 匹配所有选中的单选/多选和下拉选
+- $("input:checked") 匹配选中的单选和多选
+- $(":selected") 匹配选中的下拉选
+
+###创建元素
+- 格式: var d = $("<div id='xxx'>abc</div>");
+###添加元素
+- 添加到最后面格式: $("body").append(d);  
+- 添加到最前面格式: $("body").prepend(d);
+###插入元素
+- 插入到某个元素的前面: $("#abc").before(d);
+- 插入到某个元素的后面: $("#abc").after(d);
+###删除元素
+- $("#abc").remove();
+
+
+###获取和修改元素的文本内容
+- 元素对象.text()  获取元素的文本内容
+- 元素对象.text("xxx") 修改元素的文本内容
+###获取和修改元素的html内容
+- 元素对象.html()  获取元素的html内容
+- 元素对象.html("<h1>xxx</h1>") 修改元素的html
+###获取和修改元素的css样式
+- 元素对象.css("样式名","样式值"); 修改元素的样式
+- 元素对象.css({"样式名1":"样式值1","样式名2":"样式值2"}) 批量修改元素样式
+- 元素对象.css("样式名"); 获取元素的样式值
+###获取和修改元素的属性
+- 元素对象.attr("属性名"); 获取
+- 元素对象.attr("属性名","属性值"); 修改元素的属性值
+
+
+
+
+
+
+
+
+
